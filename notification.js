@@ -8,7 +8,8 @@ const XSS_PAYLOAD_FIRE_EMAIL_TEMPLATE = fs.readFileSync(
 	'utf8'
 );
 
-async function send_discord_notification(xss_payload_fire_data, webhook) {
+async function send_discord_notification(xss_payload_fire_data) {
+    let webhook = process.env.DISCORD_WEBHOOK;
 	const notification_html_email_body = mustache.render(
 		XSS_PAYLOAD_FIRE_EMAIL_TEMPLATE,
 		xss_payload_fire_data
